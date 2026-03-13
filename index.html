@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+             --bg: #9b9b9b;
+             --panel: #111827;
+             --accent: #08a0f7;
+             --muted: #9aa4b2;
+             --btn: #1f2937;
+             --btn-accent: #0b75b8;
+             --glass: rgba(255, 255, 255, 0.03);
+             font-family: Roboto;
+        }
+
+        *{
+            box-sizing: border-box;
+        }
+
+        html, body{
+            height: 100vh;
+            margin: 0;
+        }
+
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, var(--bg), #071019);
+            padding: 24px;
+            color: #e6eef6;
+        }
+
+        .calc {
+            width: 360px;
+            max-width: 92vw;
+            background: linear-gradient(
+                180deg, var(--panel), #0b1220
+            );
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: 
+                0 10px 30px rgba(2, 6, 23, 0.6)
+                inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        
+        }
+
+        .display {
+            background: var(--glass);
+            border-radius: 10px;
+            padding: 14px;
+            min-height: 76px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 14px;
+            word-break: break-all;
+        }
+
+        .small {
+            font-size: 0.82rem;
+            color: var(--muted);
+            text-align: right;
+            opacity: 0.95;
+        }
+
+        .large {
+            font-size: 1.6rem;
+            text-align: right;
+            font-weight: bold;
+            letter-spacing: 0.6px;
+            word-wrap: break-word;
+        }
+
+        /*grid de botões*/
+        .pad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button { 
+            background: var(--btn);
+            border: 0;
+            color: inherit;
+            padding: 14px 12px;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: transform 0.08s ease, 
+                box-shadow 0.08s ease,
+                background 0.12s ease;
+            box-shadow: 0 4px 8px rgba(2, 6, 23, 0.5);
+            user-select: none;
+
+        }
+
+        button:active {
+            transform: translateY(1px) scale(0.997);
+        }
+
+        .btn-op {
+            background:  linear-gradient(
+                180deg, var(--btn-accent), #095e95
+            );
+            color: #fff;
+        }
+
+        .btn-igual {
+            grid-column: span 2;
+        }
+
+        .btn-accent-soft {
+            background: linear-gradient(
+                180deg, #13202b, #0f1b24
+            );
+            color: var(--muted);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="calc">
+        <!--Tela da calculadora-->
+        <div class="display" id="display">
+            <div class="small" id="history">&nbsp;</div>
+            <div class="large" id="output">0</div>
+        </div>
+        <!--Teclado da calculadora-->
+        <div class="pad">
+            <button class="btn-accent-soft" data-action="clear">C</button>
+            <button class="btn-accent-soft" data-action="back">&#9003;</button>
+            <button class="btn-accent-soft" data-action="percent">%</button>
+            <button class="btn-op" data-action="op">÷</button>
+
+            <button data-num>7</button>
+            <button data-num>8</button>
+            <button data-num>9</button>
+            <button class="btn-op" data-action="op">x</button>
+
+            <button data-num>4</button>
+            <button data-num>5</button>
+            <button data-num>6</button>
+            <button class="btn-op" data-action="op">-</button>
+
+            <button data-num>1</button>
+            <button data-num>2</button>
+            <button data-num>3</button>
+            <button class="btn-op" data-action="op">+</button>
+
+            <button data-num>0</button>
+            <button data-num>.</button>
+            <button class="btn-igual btn-op" data-action="equals">=</button>
+        </div>
+
+    </div> 
+    <script src="calculadora.js"></script>
+</body>
+</html>
